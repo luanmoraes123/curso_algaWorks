@@ -1,6 +1,7 @@
 package com.algaworks.cursoalga.api.exceptionhandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		Problema problema = new Problema();
 		problema.setStatus(status.value());
-		problema.setDatahora(LocalDateTime.now());
+		problema.setDatahora(OffsetDateTime.now());
 		problema.setTitulo("Um ou mais argumentos estão invalidos. Faça o preenchimento correto e tente novamente.");
 		problema.setCampos(campos);
 		return handleExceptionInternal(ex, problema, headers, status, request);
@@ -52,7 +53,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		Problema problema = new Problema();
 		problema.setStatus(status.value());
-		problema.setDatahora(LocalDateTime.now());
+		problema.setDatahora(OffsetDateTime.now());
 		problema.setTitulo(ex.getMessage());
 		
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
